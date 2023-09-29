@@ -33,17 +33,25 @@
 
       <div id="input-container">
         <div class="input-content">
-          <input type="text" name="insert-task" id="insert-task" placeholder="Cosa va fatto oggi?">
-          <p id="error-message">Messaggio di errore</p>
+          <input type="text" name="insert-task" id="insert-task" placeholder="Cosa devo fare oggi?" v-model="newTask" @keyup.enter="addTask">
+          <p id="error-message">{{ errorMessage }}</p>
         </div>
-        <button class="btn ">Aggiungi Task</button>
+        <button @click="addTask" class="btn">Aggiungi Task</button>
       </div>
 
       <div class="list">
+        <h3>Tasks:</h3>
         <ul>
-          <li>
-            <span>comprare il pane</span>
-            <i class="fa-solid fa-trash"></i>
+          <li v-for="(task, index) in tasks">
+            <span 
+            @click="task.isDone = !task.isDone" 
+            :class="[task.isDone ? doneClass  : '']">
+              {{ task.content }}
+            </span>  
+            <button @click="removeTask(index)">
+              <i  
+              class="fa-solid fa-trash"></i>
+            </button> 
           </li>
         </ul>
       </div>
