@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- vue file  -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.cjs.js" integrity="sha512-Om0T2d9tl4H2ShSsEkWjJeQOlXGJg4OZvXKZw075refp2RNZ1avQDbqd6WhwGbWhqpcn2oPmExCEa/lSLzZaJw==" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.js" integrity="sha512-w39cIBZHEf0ac8RERRGs+aTrQbBIpb+0qGsMCKfwvJSmN6YV8brsbYN1a/nTmuQgfrGyg7p3WI4HRu1rs3rLvw==" crossorigin="anonymous"></script>
   <!-- google font  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,15 +23,30 @@
 <body>
 
   <header>
-    <div>
+    <div class="container logo">
       <img src="./img/logo.svg" alt="logo boolean">
     </div>
   </header>
 
   <main>
-    <div id="app">
+    <div id="app" class="container">
 
+      <div id="input-container">
+        <div class="input-content">
+          <input type="text" name="insert-task" id="insert-task" placeholder="Cosa va fatto oggi?">
+          <p id="error-message">Messaggio di errore</p>
+        </div>
+        <button class="btn ">Aggiungi Task</button>
+      </div>
 
+      <div class="list">
+        <ul>
+          <li>
+            <span>comprare il pane</span>
+            <i class="fa-solid fa-trash"></i>
+          </li>
+        </ul>
+      </div>
 
     </div>
   </main>
