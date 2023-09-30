@@ -76,6 +76,8 @@ header img {
 #error-message {
   color: rgba(200, 0, 0, 0.7);
   padding: 10px 5px;
+  height: 40px;
+  font-size: 15px;
 }
 
 

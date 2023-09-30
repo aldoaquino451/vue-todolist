@@ -44,4 +44,6 @@ DOPO
 - con una funzione pusho nell'array tutti gli elementi che stampo nell'input
 
 BONUS
+- se il todo ha meno di 5 caratteri esporre un messaggio di errore
+- eliminare il todo solo se è stato svolto, altrimenti esporre un messaggio di errore
 

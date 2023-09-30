@@ -5,16 +5,21 @@
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <!-- vue file  -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.3.4/vue.global.js" integrity="sha512-w39cIBZHEf0ac8RERRGs+aTrQbBIpb+0qGsMCKfwvJSmN6YV8brsbYN1a/nTmuQgfrGyg7p3WI4HRu1rs3rLvw==" crossorigin="anonymous"></script>
+
   <!-- google font  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+
   <!-- font awesome  -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.css" integrity="sha512-KOWhIs2d8WrPgR4lTaFgxI35LLOp5PRki/DxQvb7mlP29YZ5iJ5v8tiLWF7JLk5nDBlgPP1gHzw96cZ77oD7zQ==" crossorigin="anonymous"/>
+
   <!-- css file  -->
   <link rel="stylesheet" href="./css/style.css">
+
   <!-- titolo  -->
   <title>To Do List</title>
 
@@ -23,40 +28,63 @@
 <body>
 
   <header>
+
     <div class="container logo">
       <img src="./img/logo.svg" alt="logo boolean">
     </div>
+
   </header>
 
   <main>
-    <div id="app" class="container">
 
+    <section id="app" class="container">
+
+      <!----- INPUT PER AGGIUNGERE TASK -->
       <div id="input-container">
+
         <div class="input-content">
-          <input type="text" name="insert-task" id="insert-task" placeholder="Cosa devo fare oggi?" v-model="newTask" @keyup.enter="addTask">
+          <input 
+          type="text" name="insert-task" 
+          id="insert-task" placeholder="Cosa devo fare oggi?" 
+          v-model="newTask" 
+          @keyup.enter="addTask">
           <p id="error-message">{{ errorMessage }}</p>
         </div>
+
         <button @click="addTask" class="btn">Aggiungi Task</button>
-      </div>
 
+      </div>
+      <!-- // INPUT PER AGGIUNGERE TASK -->
+
+
+      <!----- LISTA DELLE TASK -->
       <div class="list">
-        <h3>Tasks:</h3>
-        <ul>
-          <li v-for="(task, index) in tasks">
-            <span 
-            @click="task.isDone = !task.isDone" 
-            :class="[task.isDone ? doneClass  : '']">
-              {{ task.content }}
-            </span>  
-            <button @click="removeTask(index)">
-              <i  
-              class="fa-solid fa-trash"></i>
-            </button> 
-          </li>
-        </ul>
-      </div>
 
-    </div>
+        <h4 v-if="tasks.length === 0">Non ci sono ancora task da completare! <br> Una volta aggiunta una task, puoi decidere di sbarrarla se è terminata e poi di rimuoverla definitivamente cliccando sul cestino. </h4>
+
+        <div v-else>
+          <h3>Tasks:</h3>
+
+          <ul>
+            <li v-for="(task, index) in tasks">
+              <span 
+              @click="task.isDone=!task.isDone" 
+              :class="[task.isDone ? doneClass  : '']"
+              >{{ task.content }}
+              </span>  
+  
+              <button @click="removeTask(index)">
+                <i class="fa-solid fa-trash"></i>
+              </button> 
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <!-- // LISTA DELLE TASK -->
+
+    </section>
+
   </main>
 
   <script src="./js/script.js"></script>
